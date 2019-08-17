@@ -1,7 +1,8 @@
+import { AnyAction } from 'redux';
 import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING } from 'app/modules/account/actionTypes';
 
 interface IRootState {
-    items: unknown[];
+    items: any;
     isLoading: boolean;
     isError: boolean
 };
@@ -12,9 +13,9 @@ export const rootState: IRootState = {
     isError: false,
 };
 
-export const accountPrimaryData = (state = rootState, action: any) => {
+export const accountPrimaryData = (state = rootState, action: AnyAction) => {
     console.log('Action::', action);
-    switch (action.payload) {
+    switch (action.type) {
         case DATA_ERROR:
             return {
                 ...state,
