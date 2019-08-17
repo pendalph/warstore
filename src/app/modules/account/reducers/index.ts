@@ -1,28 +1,37 @@
 import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING } from 'app/modules/account/actionTypes';
 
 interface IRootState {
-    data: unknown[];
+    items: unknown[];
     isLoading: boolean;
     isError: boolean
 };
 
 export const rootState: IRootState = {
-    data: [], // empty object
+    items: [], // empty array
     isLoading: false, // initially the download status is false, when it becomes true when the download starts
     isError: false,
 };
 
-
-export function accountReducer(state = rootState, action: any){
-    switch (action.type) {
+export const accountPrimaryData = (state = rootState, action: any) => {
+    console.log('Action::', action);
+    switch (action.payload) {
+        case DATA_ERROR:
+            return {
+                ...state,
+                isError: action.payload
+            };
+        
         case DATA_LOADING:
-            return { ...state, data: action.payload, isLoading: true, isError: false}
+            return {
+                ...state,
+                isLoading: action.payload
+            };
 
         case DATA_SUCCESS:
-            return { ...state, data: action.payload, isLoading: false, isError: false}
-
-        case DATA_ERROR:
-            return { ...state, isError: true, isLoading: false }
+            return {
+                ...state,
+                items: action.payload
+            };
 
         default:
             return state

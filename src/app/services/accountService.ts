@@ -1,6 +1,6 @@
 class AccountServices {
     
-    public APP_ID: string = 'ecf06dbd17904533ae6c1ecb672df4bc'; // app keys - https://developers.wargaming.net/applications/
+    public APP_ID: string = '3e5721b263115b6c375cce4e144c33ed'; // app keys - https://developers.wargaming.net/applications/
     public API_URL: string = 'https://api.worldoftanks.ru/wot/account/list/?application_id';   // base link for receiving account information
 
     async getAccountData(name: string){

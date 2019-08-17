@@ -1,41 +1,44 @@
 import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING } from 'app/modules/account/actionTypes';
 
-export function getDataLoading(loading: boolean) {
-    return {
-        type: DATA_LOADING,
-        isLoading: loading
-    };
-};
-
-export function getDataSuccess(items: any) { // Исправить тип, написать интерфейс исходя из того что будет приходить х1
-    return {
-        type: DATA_SUCCESS,
-        items
-    };
-};
-
-export function getDataError(error: boolean) {
+export const dataError = (error: boolean) => {
     return {
         type: DATA_ERROR,
-        isError: error
+        payload: error
     };
 };
 
-export function fetchAccountData (url: string) {
-    return (dispatch: any) => { // Исправить тип, написать интерфейс исходя из того что будет приходить х2
-        dispatch(getDataLoading(true));
+export const dataLoading = (loading: boolean) => {
+    return {
+        type: DATA_LOADING,
+        payload: loading
+    };
+};
+
+export const dataSuccess = (items: any) => {
+    return {
+        type: DATA_SUCCESS,
+        payload: items
+    };
+};
+
+export const itemsFetchData = (url: string) => {
+    return (dispatch: any) => {
+
+        dispatch(dataLoading(true));
+
         fetch(url)
-        .then((result) => {
-            if(!result.ok) {
-                throw Error(result.statusText);
-            };
+            .then((response) => {
 
-            dispatch(getDataLoading(false));
+                if(!response.ok) {
+                    throw Error(response.statusText);
+                }
 
-            return result;
-        })
-        .then((response) => response.json())
-        .then((items) => dispatch(getDataSuccess(items)))
-        .catch(() => dispatch(getDataError(true)));
-    }
-}
+                dispatch(dataLoading(false));
+
+                return response;
+            })
+            .then((response) => response.json())
+            .then((items) => dispatch(dataSuccess(items)))
+            .catch(() => dispatch(dataError(true)));
+    };
+};
