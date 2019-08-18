@@ -1,10 +1,11 @@
 import { AnyAction } from 'redux';
-import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING } from 'app/modules/account/actionTypes';
+import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'app/modules/account/actionTypes';
 
 interface IRootState {
     items: any;
     isLoading: boolean;
-    isError: boolean
+    isError: boolean;
+    accountId?: number;
 };
 
 export const rootState: IRootState = {
@@ -14,7 +15,7 @@ export const rootState: IRootState = {
 };
 
 export const accountPrimaryData = (state = rootState, action: AnyAction) => {
-    console.log('Action::', action);
+    // console.log('Action::', action);
     switch (action.type) {
         case DATA_ERROR:
             return {
@@ -33,6 +34,12 @@ export const accountPrimaryData = (state = rootState, action: AnyAction) => {
                 ...state,
                 items: action.payload
             };
+
+        case ACCOUNT_ID:
+            return {
+                ...state,
+                accountId: action.payload
+            }
 
         default:
             return state

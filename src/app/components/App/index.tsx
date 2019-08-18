@@ -1,40 +1,48 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { itemsFetchData } from 'app/modules/account/actions';
-import { store } from 'app/modules/configuredStore';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { itemsFetchData, selectAccountId } from 'app/modules/account/actions';
 
-const App: React.FC<{fetchData: any}> = (props) => {
+const App: React.FC = () => {
 
-    const [ nickname, setNickname ] = useState(``);
+    const dispatch = useDispatch();
 
     const handleChange = (event: any) => {
-        setNickname(event.target.value);
-        props.fetchData(`https://api.worldoftanks.ru/wot/account/list/?application_id=3e5721b263115b6c375cce4e144c33ed&search=${nickname}`);
+        const nickname = event.target.value
+        dispatch(itemsFetchData(`https://api.worldoftanks.ru/wot/account/list/?application_id=3e5721b263115b6c375cce4e144c33ed&search=${nickname}`));
     };
 
-    console.log(store.getState())
+    const handleSelect = (id: number) => dispatch(selectAccountId(id));
     
+    const accountData = useSelector((state: any) => {
+        return state.accountPrimaryData.items && state.accountPrimaryData.items.data;
+    });
+
+    const ListItems = () => {
+        return (
+            <React.Fragment>
+                {accountData ? (
+                    accountData.map((value: any) => (
+                        <ul>
+                            <li key={value.account_id} onClick={() => handleSelect(value.account_id)}>{value.nickname}</li>
+                        </ul>
+                    ))
+                ) : (
+                    <span>Введите имя пользователя что бы выбрать нужное из списка</span>
+                )}
+            </React.Fragment>
+        )
+    }
+    
+
     return (
         <React.Fragment>
             <h1>hello</h1>
-            <input placeholder='example: anubisath' onChange={handleChange} ></input>
-
+            <input placeholder='example: anubisath' onChange={handleChange}></input>
+            <React.Fragment>
+                <ListItems />
+            </React.Fragment>
         </React.Fragment>
     );
 };
 
-const mapStateToProps = (state: any) => {
-    return {
-        data: state.data || [],
-        isLoading: state.isLoading,
-        isError: state.isError
-    };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        fetchData: (url: string) => dispatch(itemsFetchData(url))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

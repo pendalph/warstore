@@ -1,4 +1,4 @@
-import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING } from 'app/modules/account/actionTypes';
+import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'app/modules/account/actionTypes';
 
 export const dataError = (error: boolean) => {
     return {
@@ -21,6 +21,13 @@ export const dataSuccess = (items: any) => {
     };
 };
 
+export const getAccountId = (id: number) => {
+    return {
+        type: ACCOUNT_ID,
+        payload: id
+    }
+}
+
 export const itemsFetchData = (url: string) => {
     return (dispatch: any) => {
 
@@ -41,4 +48,10 @@ export const itemsFetchData = (url: string) => {
             .then((items) => dispatch(dataSuccess(items)))
             .catch(() => dispatch(dataError(true)));
     };
+};
+
+export const selectAccountId = (id: number) => {
+    return (dispatch: any) => {
+        dispatch(getAccountId(id));
+    }
 };
