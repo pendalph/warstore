@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { accountPrimaryData } from 'app/modules/account/reducers';
+import { accountPrimaryData } from 'modules/account/reducers';
 
 export const rootReducer = combineReducers({
     accountPrimaryData

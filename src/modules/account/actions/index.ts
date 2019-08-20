@@ -1,4 +1,4 @@
-import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'app/modules/account/actionTypes';
+import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'modules/actionTypes';
 
 export const dataError = (error: boolean) => {
     return {

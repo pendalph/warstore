@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { itemsFetchData, selectAccountId } from 'app/modules/account/actions';
+import { itemsFetchData, selectAccountId } from 'modules/account/actions';
 
 const App: React.FC = () => {
 
@@ -30,17 +30,14 @@ const App: React.FC = () => {
                     <span>Введите имя пользователя что бы выбрать нужное из списка</span>
                 )}
             </React.Fragment>
-        )
-    }
+        );
+    };
     
-
     return (
         <React.Fragment>
             <h1>hello</h1>
             <input placeholder='example: anubisath' onChange={handleChange}></input>
-            <React.Fragment>
-                <ListItems />
-            </React.Fragment>
+            <ListItems />
         </React.Fragment>
     );
 };

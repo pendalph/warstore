@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'app/modules/account/actionTypes';
+import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'modules/actionTypes';
 
 interface IRootState {
     items: any;
