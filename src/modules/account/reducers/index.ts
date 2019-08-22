@@ -6,12 +6,14 @@ interface IRootState {
     isLoading: boolean;
     isError: boolean;
     accountId?: number;
+    info: any
 };
 
 export const rootState: IRootState = {
-    items: [], // empty array
-    isLoading: false, // initially the download status is false, when it becomes true when the download starts
+    items: [],
+    isLoading: false,
     isError: false,
+    info: [],
 };
 
 export const accountPrimaryData = (state = rootState, action: AnyAction) => {
@@ -39,7 +41,7 @@ export const accountPrimaryData = (state = rootState, action: AnyAction) => {
             return {
                 ...state,
                 accountId: action.payload
-            }
+            };
 
         default:
             return state

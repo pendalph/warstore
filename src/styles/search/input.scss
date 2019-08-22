@@ -2,7 +2,42 @@
     width: 100%;
     height: 40px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 400;
     box-sizing: border-box;
-    border: none;
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid rgba(80,80,80,0.6);
+    color: #ecf0f1;
+    transition: all .3s;
+    &:focus {
+        color: #ecf0f1;
+        border-color: #666;
+        background-color: rgba(0,0,0,0.8);
+        box-shadow: 0 0 2px rgba(0,0,0,0.7) inset;
+        outline: 0;
+    }
+    &:hover {
+        color: #ecf0f1;
+        border-color: #666;
+        background-color: rgba(0,0,0,0.8);
+        box-shadow: 0 0 2px rgba(0,0,0,0.7) inset;
+        outline: 0;
+    }
 }
+
+::-webkit-input-placeholder {
+    color: #bdc3c7;
+    font-weight: 400;
+  }
+::-moz-placeholder {
+    color: #bdc3c7;
+    font-weight: 400;
+  }
+:-ms-input-placeholder {
+    color: #bdc3c7;
+    font-weight: 400;
+  }
+:-moz-placeholder {
+    color: #bdc3c7;
+    font-weight: 400;
+  }
