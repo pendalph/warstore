@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Player: React.FC = () => {
+const Player: React.FC<{id: number}> = () => {
     return(
         <h1>player</h1>
     );
