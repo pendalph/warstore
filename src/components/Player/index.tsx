@@ -15,17 +15,27 @@ const Player: React.FC<{id: number}> = (props) => {
             });
     }, []);
 
-    if(info) {
-        console.log('1')
-    }
-    else {
-        console.log('2')
+    const PlayerData = () => {
+        const stats = info[`${props.id}`];
+        return (
+            <React.Fragment>
+                <div>last_battle_time: {stats.last_battle_time}</div>
+                <div>account_id: {stats.account_id}</div>
+                <div>created_at: {stats.created_at}</div>
+                <div>updated_at: {stats.updated_at}</div>
+                <div>global_rating: {stats.global_rating}</div>
+                <div>nickname: {stats.nickname}</div>
+                <div>logout_at: {stats.logout_at}</div>
+                <div>STATS:</div>
+                <div>logout_at: {stats.logout_at}</div>
+            </React.Fragment>
+        )
     }
 
     return(
-        <React.Fragment>
-            {info ? (<h1>{props.id}</h1>) : (<Skeleton count={5}/>)}
-        </React.Fragment>
+        <div>
+            {info ? (<PlayerData/>) : (<Skeleton count={5}/>)}
+        </div>
     );
 };
 

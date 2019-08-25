@@ -13,11 +13,9 @@ const Search: React.FC = () => {
     };
 
     return(
-        <div className='wrapper'>
-            <div className='search-block'>
-                <input placeholder='example: anubisath' onChange={handleChange} className='search-input'></input>
-                <Dropdown/>
-            </div>
+        <div className='search-block'>
+            <input placeholder='example: anubisath' onChange={handleChange} className='search-input'></input>
+            <Dropdown/>
         </div>
     );
 };

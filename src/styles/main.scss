@@ -1,5 +1,11 @@
+@import './variables.scss';
 @import './reset.scss';
-@import './search/input.scss';
-@import './search/wrapper.scss';
-@import './search/dropdown.scss';
-@import './search/logo.scss';
+
+//layout
+@import './latyout/wrapper.scss';
+@import './latyout/sideMenu.scss';
+@import './latyout/content.scss';
+
+// components
+@import './components/input.scss';
+@import './components/dropdown.scss';
