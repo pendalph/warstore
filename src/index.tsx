@@ -3,9 +3,8 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'modules/configuredStore';
-import 'styles/main.scss';
-
 import App from 'components/App';
+import './styles/main.scss';
 
 const TARGET_ROOT = document.querySelector('#root');
 
