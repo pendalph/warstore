@@ -4,7 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'modules/configuredStore';
 import App from 'components/App';
-import './styles/main.scss';
+
+import './styles/index.scss';
 
 const TARGET_ROOT = document.querySelector('#root');
 

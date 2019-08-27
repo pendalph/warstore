@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background: $dark;
+    &-logo {
+        font-weight: 700;
+        font-size: 24px;
+        color: $red;
+        padding-left: 100px;
+    }
+    &-nav {
+        padding-left: 10px;
+        &-list {
+            display: flex;
+            list-style: none;
+        }
+        &-elements {
+            padding: 0px 15px 0px 15px;
+            &__link {
+                font-size: 18px;
+                font-weight: 600;
+                color: $red;
+                text-decoration: none;
+            }
+        }
+    }
+    &-search {
+        margin-left: auto;
+        padding-right: 100px;
+        &__input {
+            width: 300px;
+            height: 30px;
+            padding-left: 20px;
+            background: #314256;
+            font-size: 16px;
+            color: $gray;
+            border: none;
+            &::placeholder {
+                font-size: 16px;
+                color: $gray;
+            }
+        }
+    }
+}
+
+.is-active {
+    border-bottom: 4px solid $red;
+    padding-bottom: 9px;
+}

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Dropdown from 'components/SearchDropdown';
 import { useDispatch } from 'react-redux';
 import { itemsFetchData } from 'modules/account/actions';
@@ -13,12 +13,9 @@ const Search: React.FC = () => {
     };
 
     return(
-        // <SearchBox>
-        //     <input placeholder='Введите имя пользователя, например: anubisath' onChange={handleChange} className='search-input'></input>
-        //     <Dropdown/>
-        // </SearchBox>
         <React.Fragment>
-            <Dropdown/>
+            <input placeholder='поиск' onChange={handleChange} className='header-search__input' />
+            <Dropdown />
         </React.Fragment>
     );
 };
