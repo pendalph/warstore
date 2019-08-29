@@ -53,6 +53,6 @@ export const itemsFetchData = (url: string) => {
 export const selectAccountId = (id: number) => {
     return (dispatch: any) => {
         dispatch(getAccountId(id));
-        dispatch(dataSuccess(undefined));
+        dispatch(dataSuccess([]));
     };
 };

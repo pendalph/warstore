@@ -13,8 +13,6 @@ const Dropdown: React.FC = () => {
         return state.accountPrimaryData.items && state.accountPrimaryData.items.data;
     });
 
-    const cleanArray: never[] = [];
-
     return(
         <div className='dropdown'>
             <ul className='dropdown-list'>
