@@ -33,8 +33,7 @@ const Player: React.FC<{id: number}> = (props) => {
         return (
             <React.Fragment>
                 <form onSubmit={handleSubmit}>
-                    <label>
-                        Режим:
+                    <div className='select'>
                         <select value={selectValue} onChange={handleChange}>
                             <option value="clan">clan</option>
                             <option defaultValue="all">all</option>
@@ -45,7 +44,7 @@ const Player: React.FC<{id: number}> = (props) => {
                             <option value="historical">historical</option>
                             <option value="team">team</option>
                         </select>
-                    </label>
+                    </div>
                 </form>
                 <div>Время последнего боя: {lastBattleTime}</div>
                 <div>Аккаунт создан: {createdAt}</div>
