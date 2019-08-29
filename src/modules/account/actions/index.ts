@@ -1,29 +1,29 @@
-import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'modules/actionTypes';
+import { SET_LOADING, SET_SUCCESS, SET_ERROR, SET_ACCOUNT_ID } from 'modules/actionTypes';
 
-export const dataError = (error: boolean) => {
+export const setError = (error: boolean) => {
     return {
-        type: DATA_ERROR,
+        type: SET_ERROR,
         payload: error
     };
 };
 
-export const dataLoading = (loading: boolean) => {
+export const setLoading = (loading: boolean) => {
     return {
-        type: DATA_LOADING,
+        type: SET_LOADING,
         payload: loading
     };
 };
 
-export const dataSuccess = (items: any) => {
+export const setSuccess = (items: any) => {
     return {
-        type: DATA_SUCCESS,
+        type: SET_SUCCESS,
         payload: items
     };
 };
 
-export const getAccountId = (id: number) => {
+export const setAccountId = (id: number) => {
     return {
-        type: ACCOUNT_ID,
+        type: SET_ACCOUNT_ID,
         payload: id
     };
 };
@@ -31,7 +31,7 @@ export const getAccountId = (id: number) => {
 export const itemsFetchData = (url: string) => {
     return (dispatch: any) => {
 
-        dispatch(dataLoading(true));
+        dispatch(setLoading(true));
 
         fetch(url)
             .then((response) => {
@@ -40,19 +40,19 @@ export const itemsFetchData = (url: string) => {
                     throw Error(response.statusText);
                 }
 
-                dispatch(dataLoading(false));
+                dispatch(setLoading(false));
 
                 return response;
             })
             .then((response) => response.json())
-            .then((items) => dispatch(dataSuccess(items)))
-            .catch(() => dispatch(dataError(true)));
+            .then((items) => dispatch(setSuccess(items)))
+            .catch(() => dispatch(setError(true)));
     };
 };
 
 export const selectAccountId = (id: number) => {
     return (dispatch: any) => {
-        dispatch(getAccountId(id));
-        dispatch(dataSuccess([]));
+        dispatch(setAccountId(id));
+        dispatch(setSuccess([]));
     };
 };

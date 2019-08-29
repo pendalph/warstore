@@ -1,41 +1,40 @@
 import { AnyAction } from 'redux';
-import { DATA_ERROR, DATA_SUCCESS, DATA_LOADING, ACCOUNT_ID } from 'modules/actionTypes';
+import { SET_LOADING, SET_SUCCESS, SET_ERROR, SET_ACCOUNT_ID } from 'modules/actionTypes';
 
-interface IRootState {
+export type State = {
     items: any;
     isLoading: boolean;
     isError: boolean;
     accountId?: number;
 };
 
-export const rootState: IRootState = {
+export const initialState: State = {
     items: [],
     isLoading: false,
     isError: false,
 };
 
-export const accountPrimaryData = (state = rootState, action: AnyAction) => {
-    console.log('Action::', action);
+const account = (state = initialState, action: AnyAction) => {
     switch (action.type) {
-        case DATA_ERROR:
+        case SET_ERROR:
             return {
                 ...state,
                 isError: action.payload
             };
         
-        case DATA_LOADING:
+        case SET_LOADING:
             return {
                 ...state,
                 isLoading: action.payload
             };
 
-        case DATA_SUCCESS:
+        case SET_SUCCESS:
             return {
                 ...state,
                 items: action.payload
             };
 
-        case ACCOUNT_ID:
+        case SET_ACCOUNT_ID:
             return {
                 ...state,
                 accountId: action.payload
@@ -45,3 +44,5 @@ export const accountPrimaryData = (state = rootState, action: AnyAction) => {
             return state
     };
 };
+
+export default account;

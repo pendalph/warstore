@@ -10,7 +10,7 @@ const Dropdown: React.FC = () => {
     const handleSelect = (id: number) => dispatch(selectAccountId(id));
 
     const accountData = useSelector((state: any) => {
-        return state.accountPrimaryData.items && state.accountPrimaryData.items.data;
+        return state.account.items && state.account.items.data;
     });
 
     return(
