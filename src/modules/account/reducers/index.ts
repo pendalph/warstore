@@ -6,18 +6,16 @@ interface IRootState {
     isLoading: boolean;
     isError: boolean;
     accountId?: number;
-    info: any
 };
 
 export const rootState: IRootState = {
     items: [],
     isLoading: false,
     isError: false,
-    info: [],
 };
 
 export const accountPrimaryData = (state = rootState, action: AnyAction) => {
-    // console.log('Action::', action);
+    console.log('Action::', action);
     switch (action.type) {
         case DATA_ERROR:
             return {

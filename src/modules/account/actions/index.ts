@@ -25,8 +25,8 @@ export const getAccountId = (id: number) => {
     return {
         type: ACCOUNT_ID,
         payload: id
-    }
-}
+    };
+};
 
 export const itemsFetchData = (url: string) => {
     return (dispatch: any) => {
@@ -53,5 +53,6 @@ export const itemsFetchData = (url: string) => {
 export const selectAccountId = (id: number) => {
     return (dispatch: any) => {
         dispatch(getAccountId(id));
-    }
+        dispatch(dataSuccess(undefined));
+    };
 };
